@@ -18,7 +18,7 @@ app.use(morgan("combined"));
 
 app.use(
   cors({
-    origin: ["http://localhost:8080", "https://your-frontend-domain.com"], // Added deployed frontend URL
+    origin: ["http://localhost:8080", "https://kinova.vercel.app"], // Added deployed frontend URL
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
