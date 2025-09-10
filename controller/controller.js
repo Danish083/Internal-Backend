@@ -172,7 +172,7 @@ export const UserSignIn = async function (req, res, next) {
           httpOnly: true,
           secure: process.env.NODE_ENV === "production",
           maxAge: 24 * 60 * 60 * 1000, // 24 hours
-          sameSite: "strict",
+          sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         })
         .status(200)
         .json({
@@ -252,11 +252,11 @@ export const getUserProfile = async function (req, res, next) {
 export const userLogout = async function (req, res, next) {
   try {
     res
-      .clearCookie("token", {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
-      })
+  clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  })
       .status(200)
       .json({
         success: true,
